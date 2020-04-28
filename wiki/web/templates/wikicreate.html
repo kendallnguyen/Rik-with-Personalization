@@ -1,0 +1,22 @@
+{% extends 'basepwiki.html' %}
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel='stylesheet' href='https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyA5-1qAp5owIqrJKNhUJd8hYO99yqKKTCs'>
+{% block title %}{% endblock title %}
+<base href="'http://127.0.0.1/' + {{ base }} ">
+</head>
+
+<body style="background-color:{{ backgroundColor }} !important;
+            color:{{ textColor }} !important;
+            font-family:{{ font }} !important;
+            font-size:20px !important;">
+<style>
+    .button {
+        background-color: {{ buttonColor }} !important;
+    }
+</style>
+
+{% block morecontent %}
+{% include 'create.html' %}
+{% endblock morecontent %}
+</body>

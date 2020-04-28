@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel='stylesheet' href='https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyA5-1qAp5owIqrJKNhUJd8hYO99yqKKTCs'>
+        <link rel="icon" href="data:,">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Personalize</title>
+    </head>
+
+    <body style="background-color:{{ backgroundColor }};
+             color:{{ textColor }};
+             font-family:{{ font }};
+             font-size:20px;">
+    <style>
+        .button {
+          background-color: {{ buttonColor }}
+        }
+    </style>
+
+    <div class="w3-bar w3-black w3-card-4 w3-mobile">
+        <a href="/wiki/web/api/personalize" class="w3-bar-item w3-button w3-animate-zoom">Home</a>
+		{% include 'nameslist.html' %}
+        <a href="/wiki/web/api/personalize/create" class="w3-bar-item w3-button w3-animate-zoom">Create User</a>
+        {% block navbarp %}{% endblock navbarp %}
+    </div>
+
+     <div class="w3-container w3-left w3-mobile">
+         <p>
+             Hello, {{ name }} <br>
+             Your current settings: <br>
+             Background Color: {{ backgroundColor }} <br>
+             Text Color: {{ textColor }} <br>
+             Button Color: {{ buttonColor }} <br>
+             Font: {{ font }} <br>
+         </p>
+     </div>
+</body>
+    {% block morecontent %}{% endblock morecontent %}
+{% endblock content %}

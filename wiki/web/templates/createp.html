@@ -1,0 +1,48 @@
+{% extends "basep.html" %}
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel='stylesheet' href='https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyA5-1qAp5owIqrJKNhUJd8hYO99yqKKTCs'>
+{% block title %} Create User {% endblock title %}
+</head>
+
+<body style="background-color:{{ backgroundColor }};
+            color:{{ textColor }};
+            font-family:{{ font }};
+            font-size:20px;
+            white-space: normal;
+            word-wrap: break-word;
+        ">
+<style>
+    .button {
+        background-color: {{ buttonColor }};
+    }
+</style>
+
+
+{% block morecontent %}
+    <div class="w3-container w3-card-4 w3-mobile">
+    <div>
+        <p>
+        {% from "_formhelpers.html" import render_field %}
+        <form method="POST" novalidate>
+            <dl>
+				<a href="https://www.w3schools.com/colors/colors_names.asp" class="w3-btn w3-hover-border-yellow">You may use any color from this page. (click me)</a>
+                {{ render_field(form.name) }}<br><br>
+				{{ render_field(form.backgroundColor) }} <br><br>
+				{{ render_field(form.textColor) }} <br><br>
+				{{ render_field(form.buttonColor) }} <br><br>
+				<a href="https://fonts.google.com/" class="w3-btn w3-hover-border-yellow">You may use any font from this page. (click me)</a>
+                {{ render_field(form.font) }} <br><br>
+				<p>To create a user, you must enter all fields. </p>
+				{{ render_field(form.method) }} <br>
+                {{ render_field(form.submit) }} <br><br>
+                </div>
+            </dl>
+		</form>
+    </div>
+    </div>
+{% endblock morecontent %}
+
+<br><br><br><br>
+
+</body>

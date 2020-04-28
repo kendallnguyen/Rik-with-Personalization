@@ -1,0 +1,45 @@
+{% extends "basep.html" %}
+<head>
+<title> Personalize </title>
+</head>
+
+<body style="background-color:{{ backgroundColor }};
+            color:{{ textColor }};
+            font-family:{{ font }};
+            font-size:20px;">
+<style>
+    .w3-button {
+        background-color: {{ buttonColor }};
+    }
+</style>
+
+{% block navbarp %}
+ 	<div class="w3-bar w3-black w3-card-4 w3-mobile">
+		{% include 'nameslist.html' %}
+    </div>
+{% endblock navbarp %}
+
+{% block morecontent %}
+    <div class="w3-container w3-mobile">
+            <p>
+                {% from "_formhelpers.html" import render_field %}
+        <form method="POST" novalidate>
+            <dl>
+				<a href="https://www.w3schools.com/colors/colors_names.asp">You may use any color from this page. (click me)</a>
+                {{ render_field(form.name) }}<br><br>
+				{{ render_field(form.backgroundColor) }} <br><br>
+				{{ render_field(form.textColor) }} <br><br>
+				{{ render_field(form.buttonColor) }} <br><br>
+				<a href="https://fonts.google.com/">You may use any font from this page. (click me)</a>
+                {{ render_field(form.font) }} <br><br>
+				<p>To create a user, you must enter all fields. </p>
+				{{ render_field(form.method) }} <br>
+                {{ render_field(form.submit) }} <br><br>
+            </dl>
+		</form>
+    </div>
+{% endblock morecontent %}
+
+<br><br><br><br>
+
+</body>

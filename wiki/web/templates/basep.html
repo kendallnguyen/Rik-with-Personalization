@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel='stylesheet' href='https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyA5-1qAp5owIqrJKNhUJd8hYO99yqKKTCs'>
+        <link rel="icon" href="data:,">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		{% block title %}Personalize{% endblock title %}
+    </head>
+
+    <body style="background-color:{{ backgroundColor }};
+             color:{{ textColor }};
+             font-family:{{ font }};
+             font-size:20px;" >
+    <style>
+        .button {
+          background-color: {{ buttonColor }}
+        }
+        .w3-button{
+            background-color: {{ buttonColor }};
+        }
+    </style>
+{#navbar start#}
+    <div class="w3-bar w3-black w3-card-4 w3-mobile">
+{#home button#}
+        <a href="/api/personalize" class="button w3-bar-item w3-bar-block w3-button">Home</a>
+{#find me button#}
+        {% include 'nameslist.html' %}
+{# Create User button#}
+        <div class="w3-dropdown-hover">
+            <button class="w3-button button">Create User</button>
+                <div class="w3-dropdown-content w3-button w3-bar-block w3-card-4 w3-mobile">
+                    <p class="w3-bar-item">
+                        {% from "_formhelpers.html" import render_field %}
+                        <form method="POST" novalidate>
+                            <dl>
+                                <a href="https://www.w3schools.com/colors/colors_names.asp" class="w3-btn w3-hover-border-yellow">You may use any color from this page. (click me)</a>
+                                {{ render_field(form.name) }}<br><br>
+                                {{ render_field(form.backgroundColor) }} <br><br>
+                                {{ render_field(form.textColor) }} <br><br>
+                                {{ render_field(form.buttonColor) }} <br><br>
+                                <a href="https://fonts.google.com/" class="w3-btn w3-hover-border-yellow">You may use any font from this page. (click me)</a>
+                                {{ render_field(form.font) }} <br><br>
+                                <p>To create a user, you must enter all fields. </p>
+                                {{ render_field(form.method) }} <br>
+                                <div class="button">
+                                {{ render_field(form.submit) }} <br><br>
+                                </div>
+                            </dl>
+                        </form>
+                    </p>
+                </div>
+        </div>
+{#my choices button#}
+        <div class="w3-dropdown-hover">
+            <button class="button w3-button">My Choices</button>
+                <div class="w3-dropdown-content w3-card-4 w3-button w3-mobile">
+                     <p class="w3-bar-item">
+                         Hello, {{ name }} <br>
+                         Your current settings: <br>
+                         Background Color: {{ backgroundColor }} <br>
+                         Text Color: {{ textColor }} <br>
+                         Button Color: {{ buttonColor }} <br>
+                         Font: {{ font }} <br>
+                     </p>
+                 </div>
+        </div>
+{#change choices button#}
+        <div class="w3-dropdown-hover">
+            <button class="w3-button button">Change Choices</button>
+                <div class="w3-dropdown-content w3-card-4 w3-button w3-mobile">
+                    <p class="w3-bar-item">
+                        {% from "_formhelpers.html" import render_field %}
+                        <form method="POST" novalidate>
+                            <dl>
+                                <a href="https://www.w3schools.com/colors/colors_names.asp" class="w3-btn w3-hover-border-yellow">You may use any color from this page. (click me)</a>
+                                {{ render_field(form.name) }}<br><br>
+                                {{ render_field(form.backgroundColor) }} <br><br>
+                                {{ render_field(form.textColor) }} <br><br>
+                                {{ render_field(form.buttonColor) }} <br><br>
+                                <a href="https://fonts.google.com/" class="w3-btn w3-hover-border-yellow">You may use any font from this page. (click me)</a>
+                                {{ render_field(form.font) }} <br><br>
+                                {{ render_field(form.method) }} <br><br>
+                                {{ render_field(form.submit) }} <br><br>
+                            </dl>
+                        </form>
+                    </div>
+        </div>
+        {% block navbarp %}{% endblock navbarp %}
+    </div>
+
+    {% block morecontent %}{% endblock morecontent %}
+{% endblock content %}
+</body>

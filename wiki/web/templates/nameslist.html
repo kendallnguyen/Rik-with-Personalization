@@ -1,0 +1,13 @@
+
+{% block navnames %}
+	<div class="w3-dropdown-hover">
+        <button class="w3-button w3-orange">Find Me</button>
+            <div class="w3-dropdown-content w3-bar-block button w3-button w3-card-4 w3-border">
+				{% for name in navnames %}
+					<a href="/api/personalize/{{ name }}" class="w3-bar-item button w3-button">{{ name }}</a>
+					<br>
+				{% endfor %}
+			</div>
+	</div>
+
+{% endblock %}
